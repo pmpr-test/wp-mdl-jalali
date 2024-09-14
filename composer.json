@@ -1,0 +1,34 @@
+{
+  "name": "pmpr-mdl/wp-mdl-jalali",
+  "type": "project",
+  "license": "proprietary",
+  "description": "Jalali Module for Wordpress",
+  "keywords": [
+    "shamsi",
+    "jalali",
+    "package",
+    "wordpress",
+    "datepicker",
+    "persian-datepicker"
+  ],
+  "require": {
+    "php": ">=8.2",
+    "pmpr-cmn/wp-cmn-foundation": "~1.4"
+  },
+  "prod-require": {
+    "php": "8.2",
+    "wordpress": "6.0",
+    "wp-cmn-foundation": "latest"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pmpr\\Module\\Jalali\\": "src/Pmpr/Module/Jalali"
+    },
+    "files": [
+      "index.php"
+    ]
+  },
+  "minimum-stability": "dev",
+  "tag": "1.2.27",
+  "timestamp": "1726343063"
+}
