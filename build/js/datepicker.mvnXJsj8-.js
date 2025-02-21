@@ -7797,7 +7797,6 @@ window.persianDate = __webpack_require__(/*! persian-date */ 401);
 
                 if (TypeHelper.isDate(value)) {
                     options.initialValueType = 'gregorian'
-                    // value = new persianDate(value).format(options.format);
                 }
 
                 if (HTMLHelper.is(element, '.auto-init')
