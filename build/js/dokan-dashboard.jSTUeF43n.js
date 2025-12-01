@@ -146,7 +146,8 @@ __webpack_require__(/*! ../../../scss/plugin/dokan/dashboard.scss */ 167);
 
 (function () {
 
-    const HookHelper    = PRHelper.getHook(),
+    const TypeHelper    = PRHelper.getType(),
+          HookHelper    = PRHelper.getHook(),
           HTMLHelper    = PRHelper.getHTML(),
           ToolHelper    = PRHelper.getTool(),
           SettingHelper = PRHelper.getSetting();
@@ -177,6 +178,16 @@ __webpack_require__(/*! ../../../scss/plugin/dokan/dashboard.scss */ 167);
 
             HTMLHelper.replace(reportRangeNewInputs, reportRangeInput, true);
             HookHelper.doAction('form_generator_field_added_to_dom', reportRangeparent);
+        }
+        const deliverInput = HTMLHelper.getElement('.delivery-time-date-picker[type="text"]');
+        if (HTMLHelper.isElement(deliverInput)) {
+            const value = HTMLHelper.getValue(deliverInput);
+            if (TypeHelper.isEmpty(value)) {
+                HTMLHelper.setValue(deliverInput, Date.now());
+            }
+            HTMLHelper.addClass(deliverInput, 'pr-datepicker');
+            const deliverInputParent = HTMLHelper.getParent(deliverInput);
+            HookHelper.doAction('form_generator_field_added_to_dom', deliverInputParent);
         }
     });
 
