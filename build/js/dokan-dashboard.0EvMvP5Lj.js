@@ -210,8 +210,9 @@ __webpack_require__(/*! ../../../scss/plugin/dokan/dashboard.scss */ 167);
         }, input);
     });
 
-    convertDatatableDatesToPersian('#dokan-coupon-dashboard', 6, 'DD MMMM YYYY')
-    convertDatatableDatesToPersian('#dokan-withdraw-request-data-view', 4, 'DD MMMM YYYY در HH:mm')
+    convertDatatableDatesToPersian('#dokan-coupon-dashboard', 6, 'DD MMMM YYYY');
+    convertDatatableDatesToPersian('#dokan-withdraw-request-data-view', 4, 'DD MMMM YYYY در HH:mm');
+    convertDatatableDatesToPersian('#dokan-vendor-reviews', 3, 'DD MMMM YYYY', 'small');
 
     HookHelper.observe('.components-datetime__date', (datepicker) => {
         const container = HTMLHelper.getParent(datepicker, '.components-popover__fallback-container');
@@ -315,7 +316,7 @@ __webpack_require__(/*! ../../../scss/plugin/dokan/dashboard.scss */ 167);
         }
     }
 
-    function convertDatatableDatesToPersian(selectorPrefix, tdIndex, format) {
+    function convertDatatableDatesToPersian(selectorPrefix, tdIndex, format, containerSelector = 'div') {
 
         HookHelper.observe(`${selectorPrefix} .dataviews-view-table td`, async (td) => {
             await ToolHelper.delay(50)
@@ -330,7 +331,7 @@ __webpack_require__(/*! ../../../scss/plugin/dokan/dashboard.scss */ 167);
                 if (!HTMLHelper.isElement(cell)) return;
                 const persianDiv = HTMLHelper.getElement('div.persian-date', cell);
                 if (HTMLHelper.isElement(persianDiv)) return;
-                const contentDiv = HTMLHelper.getElement('div', cell);
+                const contentDiv = HTMLHelper.getElement(containerSelector, cell);
                 if (!HTMLHelper.isElement(contentDiv)) return;
 
                 const original                         = contentDiv.textContent.trim(),
